@@ -5,6 +5,15 @@
 #include "Crawler.h"
 using namespace std;
 
+Crawler::Crawler(int id, int x, int y, int direction, int health) {
+    this->id = id;
+    this->position = {x, y};
+    this->direction = direction;
+    this->health = health;
+    this->alive = true;
+    this->path.push_back(this->position);
+}
+
 void Crawler::move()
 {
     while (isWayBlocked())
