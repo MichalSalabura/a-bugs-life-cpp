@@ -7,7 +7,8 @@
 
 using namespace std;
 
-Crawler::Crawler(int id, int x, int y, int direction, int health) {
+Crawler::Crawler(char t, int id, int x, int y, int direction, int health) {
+    this->type = t;
     this->id = id;
     this->position = {x, y};
     this->direction = direction;

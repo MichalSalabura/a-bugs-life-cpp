@@ -11,6 +11,7 @@
 class Bug
 {
     protected:
+        char type;
         int id;
         std::pair<int, int> position;
         int direction;
@@ -27,6 +28,7 @@ class Bug
         int getHealth() const { return health; }
         bool isAlive() const { return alive; }
         std::list<std::pair<int,int>> getPath() const { return path; }
+        char getType() const { return type; }
 };
 
 

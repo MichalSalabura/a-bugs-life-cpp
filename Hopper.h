@@ -13,7 +13,7 @@ class Hopper : public Bug
         int hopLength;
 
     public:
-        Hopper(int id, int x, int y, int direction, int health, int hopLength);
+        Hopper(char t, int id, int x, int y, int direction, int health, int hopLength);
         int getHopLength() const { return hopLength; }
         void move() override;
 ;

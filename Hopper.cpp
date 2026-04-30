@@ -7,8 +7,9 @@
 
 using namespace std;
 
-Hopper::Hopper(int id, int x, int y, int direction, int health, int hopLength)
+Hopper::Hopper(char t, int id, int x, int y, int direction, int health, int hopLength)
 {
+    this->type = t;
     this->id = id;
     this->position = {x, y};
     this->direction = direction;
