@@ -3,8 +3,32 @@
 //
 
 #include "Crawler.h"
+using namespace std;
 
 void Crawler::move()
 {
+    while (isWayBlocked())
+    {
+        direction = rand() % 4 + 1;
+    };
+
+    if (direction == 1)
+    {
+        position.second -= 1;
+    }
+    else if (direction == 2)
+    {
+        position.first += 1;
+    }
+    else if (direction == 3)
+    {
+        position.second += 1;
+    }
+    else if (direction == 4)
+    {
+        position.first -= 1;
+    }
+
+    path.push_back(position);
 
 }
