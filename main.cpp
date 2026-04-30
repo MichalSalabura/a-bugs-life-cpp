@@ -13,6 +13,7 @@ using namespace std;
 
 void loadBugs(vector<Bug*>& bug_vector);
 void displayAllBugs(vector<Bug*>& bug_vector);
+void findBug(vector<Bug*>& bug_vector);
 
 int main()
 {
@@ -22,7 +23,9 @@ int main()
     loadBugs( bug_vector);
     cout << "loaded " << bug_vector.size() << " bugs" << endl;
 
-    displayAllBugs(bug_vector);
+    // displayAllBugs(bug_vector);
+
+    findBug(bug_vector);
 }
 
 void loadBugs(vector<Bug*>& bug_vector)
@@ -108,4 +111,39 @@ void displayAllBugs(vector<Bug*>& bug_vector)
         }
         cout << endl;
     }
+}
+
+void findBug(vector<Bug*>& bug_vector)
+{
+    int id;
+    cout << "Please enter bug id: (between 101 and 125 inclusive):" << endl;
+    cin >> id;
+    while (id < 101 || id > 125) {
+        cout << "Please enter a proper value: " << endl;
+        cin >> id;
+    };
+
+
+    for (Bug* bug : bug_vector)
+    {
+        if (bug->getId() == id)
+        {
+            if (bug->getType() == 'C')
+            {
+                Crawler* crawler = dynamic_cast<Crawler*>(bug);
+                cout << crawler->getId() << " Crawler (" << crawler->getPosition().first << ", "
+                << crawler->getPosition().second << ") " << crawler->getHealth() << " " << crawler->getDirection()
+                << " " << crawler->isAlive() << endl;
+            } else
+            {
+                Hopper* hopper = dynamic_cast<Hopper*>(bug);
+                cout << hopper->getId() << " Hopper (" << hopper->getPosition().first << ", "
+                << hopper->getPosition().second << ") " << hopper->getHealth() << " " << hopper->getDirection()
+                << " " << hopper->getHopLength() << " " << hopper->isAlive() << endl;
+            }
+           return;
+        }
+    }
+    cout << "bug " << id << " not found" << endl;
+    return;
 }
