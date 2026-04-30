@@ -11,15 +11,19 @@
 
 using namespace std;
 
-void loadBugs();
+void loadBugs(vector<Bug*>& bug_vector);
 
 int main()
 {
+    vector<Bug*> bug_vector;
 
-    loadBugs();
+
+    loadBugs( bug_vector);
+
+    cout << "loaded " << bug_vector.size() << " bugs" << endl;
 }
 
-void loadBugs()
+void loadBugs(vector<Bug*>& bug_vector)
 {
 
     ifstream fin("bugs.txt");
@@ -29,12 +33,24 @@ void loadBugs()
         getline(fin, line);
         while(fin)
         {
-            char bugParameters[8];
+            string bugParameters[8];
+            int i = 0;
             stringstream ss(line);
             string value;
             while(getline(ss, value, ';'))
             {
-                cout << value << endl;
+                bugParameters[i] = value;
+                i++;
+            }
+
+            if (bugParameters[0] == "C")
+            {
+                Crawler* c = new Crawler(stoi(bugParameters[1]), stoi(bugParameters[2]), stoi(bugParameters[3]), stoi(bugParameters[4]), stoi(bugParameters[5]));
+                bug_vector.push_back(c);
+            } else if (bugParameters[0] == "H")
+            {
+                Hopper* h = new Hopper(stoi(bugParameters[1]), stoi(bugParameters[2]), stoi(bugParameters[3]), stoi(bugParameters[4]), stoi(bugParameters[5]), stoi(bugParameters[6]));
+                bug_vector.push_back(h);
             }
             getline(fin, line);
         }
