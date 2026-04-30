@@ -6,4 +6,9 @@
 
 bool Bug::isWayBlocked()
 {
+    if (direction == 1 && position.second == 0) return true;
+    if (direction == 2 && position.first == 9) return true;
+    if (direction == 3 && position.second == 9) return true;
+    if (direction == 4 && position.first == 0) return true;
+    return false;
 }
