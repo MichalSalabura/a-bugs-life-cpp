@@ -12,11 +12,11 @@ class Bug
 {
     protected:
         int id;
-        pair<int, int> position;
+        std::pair<int, int> position;
         int direction;
         int health;
         bool alive;
-        list<pair<int,int>> path;
+        std::list<std::pair<int,int>> path;
 
     public:
         virtual void move() = 0;
