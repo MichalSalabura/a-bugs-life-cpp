@@ -21,6 +21,12 @@ class Bug
     public:
         virtual void move() = 0;
         bool isWayBlocked();
+        int getId() const { return id; }
+        std::pair<int,int> getPosition() const { return position; }
+        int getDirection() const { return direction; }
+        int getHealth() const { return health; }
+        bool isAlive() const { return alive; }
+        std::list<std::pair<int,int>> getPath() const { return path; }
 };
 
 

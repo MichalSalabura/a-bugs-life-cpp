@@ -14,6 +14,7 @@ class Hopper : public Bug
 
     public:
         Hopper(int id, int x, int y, int direction, int health, int hopLength);
+        int getHopLength() const { return hopLength; }
         void move() override;
 ;
 };
