@@ -3,6 +3,8 @@
 //
 
 #include "Hopper.h"
+#include <cstdlib>
+
 using namespace std;
 
 Hopper::Hopper(int id, int x, int y, int direction, int health, int hopLength)

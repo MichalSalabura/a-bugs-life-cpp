@@ -3,6 +3,8 @@
 //
 
 #include "Crawler.h"
+#include <cstdlib>
+
 using namespace std;
 
 Crawler::Crawler(int id, int x, int y, int direction, int health) {
