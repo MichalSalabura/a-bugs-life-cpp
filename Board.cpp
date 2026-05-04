@@ -15,6 +15,7 @@ using namespace std;
 
 Board::Board()
 {
+    srand(time(nullptr));
     cells.resize(10, vector<vector<Bug*>>(10));
 }
 
@@ -148,7 +149,6 @@ void Board::tapBoard()
 
     if (aliveBugs.size() == 0) return;
 
-    srand(time(nullptr));
     Bug* frozen = aliveBugs[rand() % aliveBugs.size()];
 
     for (Bug* bug : aliveBugs)
