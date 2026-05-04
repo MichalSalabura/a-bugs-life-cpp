@@ -14,4 +14,6 @@ add_executable(bugs_life
         Hopper.h
         main.cpp
         Board.cpp
-        Board.h)
+        Board.h
+        Slider.cpp
+        Slider.h)
