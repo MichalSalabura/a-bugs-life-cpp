@@ -17,6 +17,7 @@ private:
 public:
     ~Board();
     void loadBugs(std::string filename);
+    void displayAllBugs();
 };
 
 #endif //BUGS_LIFE_BOARD_H
