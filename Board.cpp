@@ -4,7 +4,6 @@
 
 #include "Board.h"
 
-#include "Board.h"
 #include "Crawler.h"
 #include "Hopper.h"
 #include <iostream>
@@ -158,6 +157,7 @@ void Board::tapBoard()
             bug->move();
         }
     }
+    buildCells();
     manageFights();
     buildCells();
     cout << "All bugs except for " << frozen->getId() << " moved" << endl;
