@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <windows.h>
 
 using namespace std;
 
@@ -356,4 +357,32 @@ void Board::fight(Bug* a, Bug* b)
     {
         b->setEatenBy(a->getId());
     }
+}
+
+void Board::runSimulation()
+{
+    int taps = 0;
+    int alive = bugs.size();
+
+    while (alive > 1)
+    {
+        cout << "\n=== Tap " << ++taps << " ===" << endl;
+        tapBoard();
+        displayAllCells();
+
+        alive = 0;
+        for (Bug* bug : bugs)
+        {
+            if (bug->isAlive()) alive++;
+        }
+        Sleep(1000);
+    }
+
+    for (Bug* bug : bugs) {
+        if (bug->isAlive()) {
+            cout << "\nLast Bug Standing: Bug " << bug->getId() << endl;
+            break;
+        }
+    }
+    exit();
 }

@@ -12,12 +12,8 @@ int main()
     board.loadBugs("bugs.txt");
     // board.displayAllBugs();
     // board.findBug();
-    board.tapBoard();
-    board.tapBoard();
-    board.tapBoard();
-    board.tapBoard();
-    board.tapBoard();
     // board.lifeHistory();
     // board.exit();
     // board.displayAllCells();
+    board.runSimulation();
 }

@@ -28,6 +28,7 @@ public:
     void displayAllCells();
     void manageFights();
     void fight(Bug* a, Bug* b);
+    void runSimulation();
 };
 
 #endif //BUGS_LIFE_BOARD_H
