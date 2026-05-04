@@ -11,4 +11,5 @@ int main()
     board.loadBugs("bugs.txt");
     // board.displayAllBugs();
     // board.findBug();
+    board.tapBoard();
 }

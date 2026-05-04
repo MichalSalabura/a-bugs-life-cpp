@@ -129,3 +129,29 @@ void Board::findBug()
     }
     cout << "bug " << id << " not found" << endl;
 }
+
+void Board::tapBoard()
+{
+    vector<Bug*> aliveBugs;
+    for (Bug* bug : bugs)
+    {
+        if (bug->isAlive())
+        {
+            aliveBugs.push_back(bug);
+        }
+    }
+
+    if (aliveBugs.size() == 0) return;
+
+    srand(time(nullptr));
+    Bug* frozen = aliveBugs[rand() % aliveBugs.size()];
+
+    for (Bug* bug : aliveBugs)
+    {
+        if (bug != frozen)
+        {
+            bug->move();
+        }
+    }
+    cout << "All bugs except for " << frozen->getId() << " moved" << endl;
+}

@@ -9,6 +9,8 @@
 #include <vector>
 #include <string>
 #include "Bug.h"
+#include <cstdlib>
+#include <ctime>
 
 class Board {
 private:
@@ -19,6 +21,7 @@ public:
     void loadBugs(std::string filename);
     void displayAllBugs();
     void findBug();
+    void tapBoard();
 };
 
 #endif //BUGS_LIFE_BOARD_H
