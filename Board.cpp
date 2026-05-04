@@ -96,3 +96,36 @@ void Board::displayAllBugs()
         cout << endl;
     }
 }
+
+void Board::findBug()
+{
+    int id;
+    cout << "Please enter bug id: (between 101 and 125 inclusive):" << endl;
+    cin >> id;
+    while (id < 101 || id > 125) {
+        cout << "Please enter a proper value: " << endl;
+        cin >> id;
+    };
+
+    for (Bug* bug : bugs)
+    {
+        if (bug->getId() == id)
+        {
+            if (bug->getType() == 'C')
+            {
+                Crawler* crawler = dynamic_cast<Crawler*>(bug);
+                cout << crawler->getId() << " Crawler (" << crawler->getPosition().first << ", "
+                << crawler->getPosition().second << ") " << crawler->getHealth() << " " << crawler->getDirection()
+                << " " << crawler->isAlive() << endl;
+            } else
+            {
+                Hopper* hopper = dynamic_cast<Hopper*>(bug);
+                cout << hopper->getId() << " Hopper (" << hopper->getPosition().first << ", "
+                << hopper->getPosition().second << ") " << hopper->getHealth() << " " << hopper->getDirection()
+                << " " << hopper->getHopLength() << " " << hopper->isAlive() << endl;
+            }
+            return;
+        }
+    }
+    cout << "bug " << id << " not found" << endl;
+}

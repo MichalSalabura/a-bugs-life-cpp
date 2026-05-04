@@ -18,6 +18,7 @@ public:
     ~Board();
     void loadBugs(std::string filename);
     void displayAllBugs();
+    void findBug();
 };
 
 #endif //BUGS_LIFE_BOARD_H
