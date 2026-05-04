@@ -13,6 +13,11 @@
 
 using namespace std;
 
+Board::Board()
+{
+    cells.resize(10, vector<vector<Bug*>>(10));
+}
+
 Board::~Board() { for (Bug* b : bugs) delete b; }
 
 void Board::loadBugs(string filename) {
@@ -153,6 +158,7 @@ void Board::tapBoard()
             bug->move();
         }
     }
+    buildCells();
     cout << "All bugs except for " << frozen->getId() << " moved" << endl;
 }
 
@@ -229,4 +235,65 @@ void Board::exit()
     }
     fout.close();
     cout << "Life history written to: " << filename << endl;
+}
+
+void Board::buildCells()
+{
+    for (int y = 0; y < 10; y++)
+    {
+        for (int x = 0; x < 10; x++)
+        {
+            cells[y][x].clear();
+        }
+    }
+
+    for (Bug* bug : bugs)
+    {
+        if (!bug->isAlive())
+        {
+            continue;
+        }
+        int x = bug->getPosition().first;
+        int y = bug->getPosition().second;
+        cells[y][x].push_back(bug);
+    }
+}
+
+void Board::displayAllCells()
+{
+    buildCells();
+
+    for (int y = 0; y < 10; y++)
+    {
+        for (int x = 0; x < 10; x++)
+        {
+            cout << "(" << x << "," << y << "): ";
+            if (cells[y][x].size() == 0)
+            {
+                cout << "empty";
+            } else
+            {
+                for (int i = 0; i < cells[y][x].size(); i++)
+                {
+                    Bug* bug = cells[y][x][i];
+
+                    if (bug->getType() == 'C')
+                    {
+                        cout << "Crawler ";
+                    }
+                    else
+                    {
+                        cout << "Hopper ";
+                    }
+                    cout << bug->getId();
+
+                    if (i + 1 < cells[y][x].size())
+                    {
+                        cout << ", ";
+                    }
+                }
+            }
+            cout << endl;
+        }
+    }
 }

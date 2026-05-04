@@ -9,14 +9,14 @@
 #include <vector>
 #include <string>
 #include "Bug.h"
-#include <cstdlib>
-#include <ctime>
 
 class Board {
 private:
     std::vector<Bug*> bugs;
+    std::vector< std::vector<std::vector<Bug*>>> cells;
 
 public:
+    Board();
     ~Board();
     void loadBugs(std::string filename);
     void displayAllBugs();
@@ -24,6 +24,8 @@ public:
     void tapBoard();
     void lifeHistory();
     void exit();
+    void buildCells();
+    void displayAllCells();
 };
 
 #endif //BUGS_LIFE_BOARD_H

@@ -17,5 +17,6 @@ int main()
     board.tapBoard();
     board.tapBoard();
     // board.lifeHistory();
-    board.exit();
+    // board.exit();
+    board.displayAllCells();
 }
