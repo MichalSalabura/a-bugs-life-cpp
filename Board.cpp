@@ -189,3 +189,44 @@ void Board::lifeHistory()
         }
     }
 }
+
+void Board::exit()
+{
+    time_t t = time(nullptr);
+    char buf[32];
+    strftime(buf, sizeof(buf), "%d.%m.%Y_%H-%M-%S", localtime(&t));
+
+    string filename = string("bugs_life_history_") + buf + ".txt";
+
+    ofstream fout(filename);
+    for (Bug* bug : bugs)
+    {
+        fout << bug->getId() << " ";
+        if (bug->getType() == 'C')
+        {
+            fout << "Crawler";
+        } else
+        {
+            fout << "Hopper";
+        }
+        fout << " Path: ";
+        const list<pair<int,int>>& path = bug->getPath();
+        for (list<pair<int, int>>::const_iterator it = path.begin(); it != path.end(); ++it)
+        {
+            fout << "(" << it->first << "," << it->second << ")";
+            if (next(it) != path.end())
+            {
+                fout << ",";
+            }
+        }
+        if (bug->isAlive())
+        {
+            fout << " Alive!" << endl;
+        } else
+        {
+            fout << " Eaten by " << bug->getEatenBy() << endl;
+        }
+    }
+    fout.close();
+    cout << "Life history written to: " << filename << endl;
+}

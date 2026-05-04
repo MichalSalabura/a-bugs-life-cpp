@@ -23,6 +23,7 @@ public:
     void findBug();
     void tapBoard();
     void lifeHistory();
+    void exit();
 };
 
 #endif //BUGS_LIFE_BOARD_H

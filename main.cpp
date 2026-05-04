@@ -16,5 +16,6 @@ int main()
     board.tapBoard();
     board.tapBoard();
     board.tapBoard();
-    board.lifeHistory();
+    // board.lifeHistory();
+    board.exit();
 }
