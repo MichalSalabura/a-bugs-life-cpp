@@ -155,3 +155,37 @@ void Board::tapBoard()
     }
     cout << "All bugs except for " << frozen->getId() << " moved" << endl;
 }
+
+void Board::lifeHistory()
+{
+    for (Bug* bug : bugs)
+    {
+        cout << "Bug " << bug->getId();
+        if (bug->getType() == 'C')
+        {
+            cout << " Crawler";
+        } else
+        {
+            cout << " Hopper";
+        }
+
+        cout << " Path: ";
+        const list<pair<int,int>>& path = bug->getPath();
+        for (list<pair<int, int>>::const_iterator it = path.begin(); it != path.end(); ++it)
+        {
+            cout << "(" << it->first << "," << it->second << ")";
+            if (next(it) != path.end())
+            {
+                cout << ",";
+            }
+        }
+
+        if  (bug->isAlive())
+        {
+            cout << " Alive!" << endl;
+        } else
+        {
+            cout << " Eaten by " << bug->getEatenBy() << endl;
+        }
+    }
+}

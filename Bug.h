@@ -18,6 +18,7 @@ class Bug
         int health;
         bool alive;
         std::list<std::pair<int,int>> path;
+        int eatenBy;
 
     public:
         virtual void move() = 0;
@@ -27,8 +28,9 @@ class Bug
         int getDirection() const { return direction; }
         int getHealth() const { return health; }
         bool isAlive() const { return alive; }
-        std::list<std::pair<int,int>> getPath() const { return path; }
+        const std::list<std::pair<int,int>>& getPath() const { return path; }
         char getType() const { return type; }
+        int getEatenBy() const { return eatenBy; }
 };
 
 

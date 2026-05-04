@@ -12,4 +12,9 @@ int main()
     // board.displayAllBugs();
     // board.findBug();
     board.tapBoard();
+    board.tapBoard();
+    board.tapBoard();
+    board.tapBoard();
+    board.tapBoard();
+    board.lifeHistory();
 }
