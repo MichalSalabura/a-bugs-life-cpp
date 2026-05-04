@@ -158,6 +158,7 @@ void Board::tapBoard()
             bug->move();
         }
     }
+    manageFights();
     buildCells();
     cout << "All bugs except for " << frozen->getId() << " moved" << endl;
 }
@@ -295,5 +296,66 @@ void Board::displayAllCells()
             }
             cout << endl;
         }
+    }
+}
+
+void Board::manageFights()
+{
+    for (int y = 0; y < 10; y++)
+    {
+        for (int x = 0; x < 10; x++)
+        {
+            vector<Bug*>& cell = cells[y][x];
+
+            if (cell.size() < 2)
+            {
+                continue;
+            }
+
+            for (size_t i = 0; i + 1 < cell.size(); i += 2)
+            {
+                Bug* b1 = cell[i];
+                Bug* b2 = cell[i + 1];
+                fight(b1, b2);
+            }
+        }
+    }
+}
+
+void Board::fight(Bug* a, Bug* b)
+{
+    cout << "Fight: " << a->getId() << " vs " << b->getId() << endl;
+
+    for (int round = 1; round <= 3; round++)
+    {
+        if (!a->isAlive() || !b->isAlive())
+        {
+            break;
+        }
+
+        int dmgA = rand() % 6;
+        int dmgB = rand() % 6;
+
+        a->takeDamage(dmgB);
+        b->takeDamage(dmgA);
+
+        cout << "Round: " << round
+             << " " << a->getId() << " takes " << dmgB
+             << ", " << b->getId() << " takes " << dmgA << endl;
+
+        if (!a->isAlive() || !b->isAlive())
+        {
+            break;
+        }
+    }
+
+    if (!a->isAlive() && b->isAlive())
+    {
+        a->setEatenBy(b->getId());
+    }
+
+    if (!b->isAlive() && a->isAlive())
+    {
+        b->setEatenBy(a->getId());
     }
 }

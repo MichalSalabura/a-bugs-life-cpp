@@ -13,7 +13,7 @@
 class Board {
 private:
     std::vector<Bug*> bugs;
-    std::vector< std::vector<std::vector<Bug*>>> cells;
+    std::vector<std::vector<std::vector<Bug*>>> cells;
 
 public:
     Board();
@@ -26,6 +26,8 @@ public:
     void exit();
     void buildCells();
     void displayAllCells();
+    void manageFights();
+    void fight(Bug* a, Bug* b);
 };
 
 #endif //BUGS_LIFE_BOARD_H

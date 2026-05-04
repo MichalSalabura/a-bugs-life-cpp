@@ -31,6 +31,8 @@ class Bug
         const std::list<std::pair<int,int>>& getPath() const { return path; }
         char getType() const { return type; }
         int getEatenBy() const { return eatenBy; }
+        void setEatenBy(int id);
+        void takeDamage(int damage);
 };
 
 

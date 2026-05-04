@@ -3,6 +3,7 @@
 //
 
 #include "Board.h"
+#include <iostream>
 using namespace std;
 
 int main()
@@ -18,5 +19,5 @@ int main()
     board.tapBoard();
     // board.lifeHistory();
     // board.exit();
-    board.displayAllCells();
+    // board.displayAllCells();
 }

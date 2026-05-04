@@ -12,3 +12,18 @@ bool Bug::isWayBlocked()
     if (direction == 4 && position.first == 0) return true;
     return false;
 }
+
+void Bug::setEatenBy(int id)
+{
+    eatenBy = id;
+}
+
+void Bug::takeDamage(int damage)
+{
+    health -= damage;
+    if (health <= 0)
+    {
+        health = 0;
+        alive = false;
+    }
+}
