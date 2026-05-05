@@ -29,6 +29,7 @@ public:
     void manageFights();
     void fight(Bug* a, Bug* b);
     void runSimulation();
+    void drawBoard();
 };
 
 #endif //BUGS_LIFE_BOARD_H

@@ -9,7 +9,6 @@ using namespace std;
 int main()
 {
     Board board;
-
     int choice = 0;
     while (choice != 8) {
         cout << "\n1. Initialise Bug Board" << endl;
@@ -19,7 +18,8 @@ int main()
         cout << "5. Display Life History" << endl;
         cout << "6. Display All Cells" << endl;
         cout << "7. Run Simulation" << endl;
-        cout << "8. Exit" << endl;
+        cout << "8. Draw Board" << endl;
+        cout << "9. Exit" << endl;
         cout << "Choice: ";
         cin >> choice;
 
@@ -38,6 +38,8 @@ int main()
         } else if (choice == 7) {
             board.runSimulation();
         } else if (choice == 8) {
+            board.drawBoard();
+        } else if (choice == 9) {
             board.exit();
         } else {
             cout << "Invalid choice." << endl;

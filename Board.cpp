@@ -59,6 +59,7 @@ void Board::loadBugs(string filename) {
         }
         fin.close();
         cout << "Loaded " << bugs.size() << " bugs." << endl;
+        buildCells();
     } else {
         cout << "Unable to open file." << endl;
     }
@@ -159,7 +160,9 @@ void Board::tapBoard()
     buildCells();
     manageFights();
     buildCells();
+
     cout << "All bugs except for " << frozen->getId() << " moved" << endl;
+    drawBoard();
 }
 
 void Board::lifeHistory()
@@ -383,4 +386,23 @@ void Board::runSimulation()
         }
     }
     exit();
+}
+
+void Board::drawBoard()
+{
+    for (int y = 0; y < 10; y++)
+    {
+        for (int x = 0; x < 10; x++)
+        {
+            if (cells[y][x].size() > 0)
+            {
+                cout << cells[y][x].size();
+            }
+            else
+            {
+                cout << "_";
+            }
+        }
+        cout << endl;
+    }
 }
