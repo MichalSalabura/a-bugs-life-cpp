@@ -6,6 +6,7 @@
 
 #include "Crawler.h"
 #include "Hopper.h"
+#include "Slider.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -47,6 +48,12 @@ void Board::loadBugs(string filename) {
                     stoi(bugParameters[4]), stoi(bugParameters[5]),
                     stoi(bugParameters[6]));
                 bugs.push_back(h);
+            } else if (bugParameters[0] == "S")
+            {
+                Slider* s = new Slider(bugParameters[0][0], stoi(bugParameters[1]),
+                    stoi(bugParameters[2]), stoi(bugParameters[3]),
+                    stoi(bugParameters[4]), stoi(bugParameters[5]));
+                bugs.push_back(s);
             }
             getline(fin, line);
         }
@@ -65,9 +72,12 @@ void Board::displayAllBugs()
         if (bug->getType() == 'C')
         {
             cout << "Crawler";
-        } else
+        } else if (bug->getType() == 'H')
         {
             cout << "Hopper";
+        } else if (bug->getType() == 'S')
+        {
+            cout << "Slider";
         }
         cout << " (" << bug->getPosition().first << ","
         << bug->getPosition().second << ") "
@@ -123,12 +133,18 @@ void Board::findBug()
                 cout << crawler->getId() << " Crawler (" << crawler->getPosition().first << ", "
                 << crawler->getPosition().second << ") " << crawler->getHealth() << " " << crawler->getDirection()
                 << " " << crawler->isAlive() << endl;
-            } else
+            } else if (bug->getType() == 'H')
             {
                 Hopper* hopper = dynamic_cast<Hopper*>(bug);
                 cout << hopper->getId() << " Hopper (" << hopper->getPosition().first << ", "
                 << hopper->getPosition().second << ") " << hopper->getHealth() << " " << hopper->getDirection()
                 << " " << hopper->getHopLength() << " " << hopper->isAlive() << endl;
+            } else if (bug->getType() == 'S')
+            {
+                Slider* slider = dynamic_cast<Slider*>(bug);
+                cout << slider->getId() << " Crawler (" << slider->getPosition().first << ", "
+                << slider->getPosition().second << ") " << slider->getHealth() << " " << slider->getDirection()
+                << " " << slider->isAlive() << endl;
             }
             return;
         }
