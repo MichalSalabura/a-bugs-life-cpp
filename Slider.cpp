@@ -3,7 +3,7 @@
 //
 
 #include "Slider.h"
-#include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -51,4 +51,11 @@ void Slider::move()
 
     position = {newX, newY};
     path.push_back(position);
+}
+
+void Slider::displayInformation()
+{
+    cout << id << " Crawler (" << position.first << ", "
+    << position.second << ") " << health << " " << direction
+    << " " << alive << endl;
 }

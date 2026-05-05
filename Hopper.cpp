@@ -3,7 +3,7 @@
 //
 
 #include "Hopper.h"
-#include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -44,4 +44,11 @@ void Hopper::move()
     }
 
     path.push_back(this->position);
+}
+
+void Hopper::displayInformation()
+{
+    cout << id << " Hopper (" << position.first << ", "
+    << position.second << ") " << health << " " << direction
+    << " " << hopLength << " " << alive << endl;
 }

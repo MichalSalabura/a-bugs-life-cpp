@@ -4,6 +4,8 @@
 
 #include "Crawler.h"
 #include <cstdlib>
+#include <iostream>
+#include <ostream>
 
 using namespace std;
 
@@ -43,4 +45,11 @@ void Crawler::move()
 
     path.push_back(position);
 
+}
+
+void Crawler::displayInformation()
+{
+    cout << id << " Crawler (" << position.first << ", "
+    << position.second << ") " << health << " " << direction
+    << " " << alive << endl;
 }

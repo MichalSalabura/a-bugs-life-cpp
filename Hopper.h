@@ -16,6 +16,7 @@ class Hopper : public Bug
         Hopper(char t, int id, int x, int y, int direction, int health, int hopLength);
         int getHopLength() const { return hopLength; }
         void move() override;
+        void displayInformation() override;
 };
 
 

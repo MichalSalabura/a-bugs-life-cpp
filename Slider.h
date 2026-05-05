@@ -12,6 +12,7 @@ class Slider : public Bug
     public:
         Slider(char t, int id, int x, int y, int direction, int health);
         void move() override;
+        void displayInformation() override;
 };
 
 

@@ -22,6 +22,7 @@ class Bug
 
     public:
         virtual void move() = 0;
+        virtual void displayInformation() = 0;
         bool isWayBlocked();
         int getId() const { return id; }
         std::pair<int,int> getPosition() const { return position; }

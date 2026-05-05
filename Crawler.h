@@ -12,6 +12,7 @@ class Crawler : public Bug
     public:
         void move() override;
         Crawler(char t, int id, int x, int y, int direction, int health);
+        void displayInformation();
 };
 
 

@@ -127,25 +127,7 @@ void Board::findBug()
     {
         if (bug->getId() == id)
         {
-            if (bug->getType() == 'C')
-            {
-                Crawler* crawler = dynamic_cast<Crawler*>(bug);
-                cout << crawler->getId() << " Crawler (" << crawler->getPosition().first << ", "
-                << crawler->getPosition().second << ") " << crawler->getHealth() << " " << crawler->getDirection()
-                << " " << crawler->isAlive() << endl;
-            } else if (bug->getType() == 'H')
-            {
-                Hopper* hopper = dynamic_cast<Hopper*>(bug);
-                cout << hopper->getId() << " Hopper (" << hopper->getPosition().first << ", "
-                << hopper->getPosition().second << ") " << hopper->getHealth() << " " << hopper->getDirection()
-                << " " << hopper->getHopLength() << " " << hopper->isAlive() << endl;
-            } else if (bug->getType() == 'S')
-            {
-                Slider* slider = dynamic_cast<Slider*>(bug);
-                cout << slider->getId() << " Crawler (" << slider->getPosition().first << ", "
-                << slider->getPosition().second << ") " << slider->getHealth() << " " << slider->getDirection()
-                << " " << slider->isAlive() << endl;
-            }
+            bug->displayInformation();
             return;
         }
     }
