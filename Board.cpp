@@ -393,19 +393,31 @@ void Board::runSimulation()
 
 void Board::drawBoard()
 {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
     for (int y = 0; y < 10; y++)
     {
         for (int x = 0; x < 10; x++)
         {
-            if (cells[y][x].size() > 0)
+            int count = cells[y][x].size();
+            if (count == 0)
             {
-                cout << cells[y][x].size();
+                SetConsoleTextAttribute(hConsole, 7);
+                cout << "_";
+            }
+            else if (count == 1)
+            {
+                SetConsoleTextAttribute(hConsole, 10);
+                cout << count;
             }
             else
             {
-                cout << "_";
+                SetConsoleTextAttribute(hConsole, 12);
+                cout << count;
             }
         }
+        SetConsoleTextAttribute(hConsole, 7);
         cout << endl;
     }
+    SetConsoleTextAttribute(hConsole, 7);
 }
