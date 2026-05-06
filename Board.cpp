@@ -153,10 +153,11 @@ void Board::tapBoard()
     }
     buildCells();
     manageFights();
+    displayAllCells();
+    drawBoard();
     buildCells();
 
     cout << "All bugs except for " << frozen->getId() << " moved" << endl;
-    drawBoard();
 }
 
 void Board::lifeHistory()
@@ -372,7 +373,6 @@ void Board::runSimulation()
     {
         cout << "\n=== Tap " << ++taps << " ===" << endl;
         tapBoard();
-        displayAllCells();
 
         alive = 0;
         for (Bug* bug : bugs)
