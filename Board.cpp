@@ -203,7 +203,7 @@ void Board::exit()
     char buf[32];
     strftime(buf, sizeof(buf), "%d.%m.%Y_%H-%M-%S", localtime(&t));
 
-    string filename = string("bugs_life_history_") + buf + ".txt";
+    string filename = string("bugs_life_history_") + buf + ".out";
 
     ofstream fout(filename);
     for (Bug* bug : bugs)
