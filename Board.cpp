@@ -117,22 +117,16 @@ void Board::displayAllBugs()
 void Board::findBug()
 {
     int id;
-    cout << "Please enter bug id: (between 101 and 125 inclusive):" << endl;
+    cout << "Please enter bug id: " << endl;
     cin >> id;
-    while (id < 101 || id > 125) {
-        cout << "Please enter a proper value: " << endl;
-        cin >> id;
-    };
 
-    for (Bug* bug : bugs)
-    {
-        if (bug->getId() == id)
-        {
+    for (Bug* bug : bugs) {
+        if (bug->getId() == id) {
             bug->displayInformation();
             return;
         }
     }
-    cout << "bug " << id << " not found" << endl;
+    cout << "Bug " << id << " not found" << endl;
 }
 
 void Board::tapBoard()
