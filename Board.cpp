@@ -332,11 +332,6 @@ void Board::fight(Bug* a, Bug* b)
 
     for (int round = 1; round <= 3; round++)
     {
-        if (!a->isAlive() || !b->isAlive())
-        {
-            break;
-        }
-
         int dmgA = rand() % 6;
         int dmgB = rand() % 6;
 
@@ -356,11 +351,13 @@ void Board::fight(Bug* a, Bug* b)
     if (!a->isAlive() && b->isAlive())
     {
         a->setEatenBy(b->getId());
+        b->increaseAmountEaten();
     }
 
     if (!b->isAlive() && a->isAlive())
     {
         b->setEatenBy(a->getId());
+        a->increaseAmountEaten();
     }
 }
 
@@ -368,6 +365,8 @@ void Board::runSimulation()
 {
     int taps = 0;
     int alive = bugs.size();
+    Bug* mostEatenBug = nullptr;
+    int mostEaten = 0;
 
     while (alive > 1)
     {
@@ -385,11 +384,20 @@ void Board::runSimulation()
     cout << "Total taps: " << taps << endl;
 
     for (Bug* bug : bugs) {
+        if (bug->getAmountEaten() > mostEaten)
+        {
+            mostEaten = bug->getAmountEaten();
+            mostEatenBug = bug;
+        }
         if (bug->isAlive()) {
             cout << "\nLast Bug Standing: Bug " << bug->getType() << bug->getId() << endl;
-            break;
         }
     }
+    if (mostEatenBug != nullptr)
+    {
+    cout << "Bug: " << mostEatenBug->getId() << " won most fights: " << mostEatenBug->getAmountEaten() << endl;
+    }
+
     exit();
 }
 

@@ -27,3 +27,8 @@ void Bug::takeDamage(int damage)
         alive = false;
     }
 }
+
+void Bug::increaseAmountEaten()
+{
+    amountEaten++;
+}

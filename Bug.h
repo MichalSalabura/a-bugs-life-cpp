@@ -19,6 +19,7 @@ class Bug
         bool alive;
         std::list<std::pair<int,int>> path;
         int eatenBy = -1;
+        int amountEaten = 0;
 
     public:
         virtual void move() = 0;
@@ -34,6 +35,9 @@ class Bug
         int getEatenBy() const { return eatenBy; }
         void setEatenBy(int id);
         void takeDamage(int damage);
+        int getAmountEaten() const { return amountEaten; }
+        void increaseAmountEaten();
+
 };
 
 
