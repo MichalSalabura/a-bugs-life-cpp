@@ -382,9 +382,11 @@ void Board::runSimulation()
         Sleep(1000);
     }
 
+    cout << "Total taps: " << taps << endl;
+
     for (Bug* bug : bugs) {
         if (bug->isAlive()) {
-            cout << "\nLast Bug Standing: Bug " << bug->getId() << endl;
+            cout << "\nLast Bug Standing: Bug " << bug->getType() << bug->getId() << endl;
             break;
         }
     }
