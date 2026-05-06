@@ -173,9 +173,12 @@ void Board::lifeHistory()
         if (bug->getType() == 'C')
         {
             cout << " Crawler";
-        } else
+        } else if (bug->getType() == 'H')
         {
             cout << " Hopper";
+        } else if (bug->getType() == 'S')
+        {
+            cout << " Slider";
         }
 
         cout << " Path: ";
@@ -214,9 +217,12 @@ void Board::exit()
         if (bug->getType() == 'C')
         {
             fout << "Crawler";
-        } else
+        } else if (bug->getType() == 'H')
         {
             fout << "Hopper";
+        } else if (bug->getType() == 'S')
+        {
+            fout << "Slider";
         }
         fout << " Path: ";
         const list<pair<int,int>>& path = bug->getPath();
@@ -282,9 +288,12 @@ void Board::displayAllCells()
                     {
                         cout << "Crawler ";
                     }
-                    else
+                    else if (bug->getType() == 'H')
                     {
                         cout << "Hopper ";
+                    } else if (bug->getType() == 'S')
+                    {
+                        cout << "Slider ";
                     }
                     cout << bug->getId();
 
