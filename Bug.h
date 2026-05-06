@@ -18,7 +18,7 @@ class Bug
         int health;
         bool alive;
         std::list<std::pair<int,int>> path;
-        int eatenBy;
+        int eatenBy = -1;
 
     public:
         virtual void move() = 0;

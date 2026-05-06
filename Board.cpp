@@ -105,10 +105,10 @@ void Board::displayAllBugs()
 
         if (bug->isAlive())
         {
-            cout << "Alive ";
+            cout << "Alive";
         } else
         {
-            cout << "Dead ";
+            cout << "Eaten by: " << bug->getEatenBy();
         }
         cout << endl;
     }
