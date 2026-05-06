@@ -10,7 +10,7 @@ int main()
 {
     Board board;
     int choice = 0;
-    while (choice != 8) {
+    while (choice != 9) {
         cout << "\n1. Initialise Bug Board" << endl;
         cout << "2. Display All Bugs" << endl;
         cout << "3. Find a Bug" << endl;
