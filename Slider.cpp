@@ -55,7 +55,7 @@ void Slider::move()
 
 void Slider::displayInformation()
 {
-    cout << id << " Crawler (" << position.first << ", "
+    cout << id << " Slider (" << position.first << ", "
     << position.second << ") " << health << " " << direction
     << " " << alive << endl;
 }
