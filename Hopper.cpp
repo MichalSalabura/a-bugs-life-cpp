@@ -43,7 +43,7 @@ void Hopper::move()
         position.first = (position.first - hopLength < 0) ? 0 : position.first - hopLength;
     }
 
-    path.push_back(this->position);
+    path.push_back(position);
 }
 
 void Hopper::displayInformation()
