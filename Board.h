@@ -14,6 +14,9 @@ class Board {
 private:
     std::vector<Bug*> bugs;
     std::vector<std::vector<std::vector<Bug*>>> cells;
+    void manageFights();
+    void fight(Bug* a, Bug* b);
+    void buildCells();
 
 public:
     Board();
@@ -24,10 +27,7 @@ public:
     void tapBoard();
     void lifeHistory();
     void exit();
-    void buildCells();
     void displayAllCells();
-    void manageFights();
-    void fight(Bug* a, Bug* b);
     void runSimulation();
     void drawBoard();
 };
